@@ -1,45 +1,236 @@
 <!DOCTYPE html>
-<html>
+<html lang="mr">
 <head>
-  <meta http-equiv="refresh" content="0; url=https://script.google.com/macros/s/AKfycbwqLVLdseD1dwejF4wHpdOqCCcBncNTT4X6VafaT80OiwJzEbfDBveZ9fu7L1DAJThd/exec">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>सरस्वती विद्यालय MIS</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
     body {
-      font-family: Arial, sans-serif;
+      font-family: 'Noto Sans Devanagari', sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
       display: flex;
       justify-content: center;
       align-items: center;
-      height: 100vh;
+      padding: 20px;
+    }
+    
+    .login-card {
+      max-width: 450px;
+      width: 100%;
+      background: white;
+      border-radius: 30px;
+      box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25);
+      overflow: hidden;
+      animation: fadeInUp 0.6s ease;
+    }
+    
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    .card-header {
       background: linear-gradient(135deg, #667eea, #764ba2);
       color: white;
-    }
-    .loader {
+      padding: 35px 30px;
       text-align: center;
     }
-    .spinner {
-      border: 4px solid rgba(255,255,255,0.3);
-      border-top: 4px solid white;
-      border-radius: 50%;
-      width: 40px;
-      height: 40px;
-      animation: spin 1s linear infinite;
-      margin: 20px auto;
+    
+    .card-header i {
+      font-size: 55px;
+      margin-bottom: 15px;
     }
-    @keyframes spin {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
+    
+    .card-header h3 {
+      font-size: 24px;
+      margin-bottom: 5px;
+    }
+    
+    .card-header p {
+      font-size: 13px;
+      opacity: 0.9;
+    }
+    
+    .card-body {
+      padding: 35px 30px;
+    }
+    
+    .input-group {
+      margin-bottom: 20px;
+    }
+    
+    .input-group input {
+      width: 100%;
+      padding: 14px 18px;
+      border: 2px solid #e0e0e0;
+      border-radius: 15px;
+      font-size: 15px;
+      font-family: 'Noto Sans Devanagari', sans-serif;
+      transition: 0.3s;
+    }
+    
+    .input-group input:focus {
+      outline: none;
+      border-color: #667eea;
+      box-shadow: 0 0 0 3px rgba(102,126,234,0.1);
+    }
+    
+    .login-btn {
+      width: 100%;
+      padding: 14px;
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      color: white;
+      border: none;
+      border-radius: 15px;
+      font-size: 16px;
+      font-weight: 600;
+      font-family: 'Noto Sans Devanagari', sans-serif;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    
+    .login-btn:hover {
+      transform: scale(1.02);
+      box-shadow: 0 5px 15px rgba(102,126,234,0.4);
+    }
+    
+    .footer {
+      text-align: center;
+      padding: 20px;
+      background: #f8f9fa;
+      font-size: 12px;
+      color: #666;
+      border-top: 1px solid #eee;
+    }
+    
+    .new-window-btn {
+      width: 100%;
+      padding: 12px;
+      background: #28a745;
+      color: white;
+      border: none;
+      border-radius: 15px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 15px;
+      transition: 0.3s;
+    }
+    
+    .new-window-btn:hover {
+      transform: scale(1.02);
+      background: #218838;
+    }
+    
+    @media (max-width: 480px) {
+      .card-header {
+        padding: 25px 20px;
+      }
+      .card-body {
+        padding: 25px 20px;
+      }
+      .card-header h3 {
+        font-size: 20px;
+      }
     }
   </style>
 </head>
 <body>
-  <div class="loader">
-    <h2>📚 सरस्वती विद्यालय MIS</h2>
-    <div class="spinner"></div>
-    <p>कृपया प्रतीक्षा करा... रीडायरेक्ट होत आहे</p>
-    <p><small><a href="https://script.google.com/macros/s/AKfycbwqLVLdseD1dwejF4wHpdOqCCcBncNTT4X6VafaT80OiwJzEbfDBveZ9fu7L1DAJThd/exec" style="color:white;">येथे क्लिक करा</a> जर आपोआप रीडायरेक्ट नसेल तर</small></p>
+  <div class="login-card">
+    <div class="card-header">
+      <i class="fas fa-school"></i>
+      <h3>📚 सरस्वती विद्यालय MIS</h3>
+      <p>विद्यार्थी व्यवस्थापन प्रणाली</p>
+    </div>
+    <div class="card-body">
+      <div class="input-group">
+        <input type="text" id="user" placeholder="📧 यूजरनेम टाका">
+      </div>
+      <div class="input-group">
+        <input type="password" id="pass" placeholder="🔒 पासवर्ड टाका">
+      </div>
+      <div class="input-group">
+        <input type="text" id="schoolCode" placeholder="🏛 शाळा कोड टाका">
+      </div>
+      <button class="login-btn" onclick="loginAndOpen()">
+        <i class="fas fa-arrow-right-to-bracket"></i> लॉगिन करा
+      </button>
+      <div id="loginMsg" style="text-align:center; margin-top:15px; color:#dc3545; font-size:13px;"></div>
+    </div>
+    <div class="footer">
+      <p>© 2026 सरस्वती माध्यमिक विद्यालय | Developed by Arun Padol</p>
+    </div>
   </div>
+
   <script>
-    window.location.href = "https://script.google.com/macros/s/AKfycbwqLVLdseD1dwejF4wHpdOqCCcBncNTT4X6VafaT80OiwJzEbfDBveZ9fu7L1DAJThd/exec";
+    // ========== तुमची Apps Script Web App URL ==========
+    const APP_URL = "https://script.google.com/macros/s/AKfycbwqLVLdseD1dwejF4wHpdOqCCcBncNTT4X6VafaT80OiwJzEbfDBveZ9fu7L1DAJThd/exec";
+    // ====================================================
+    
+    function loginAndOpen() {
+      let user = document.getElementById('user').value.trim();
+      let pass = document.getElementById('pass').value;
+      let schoolCode = document.getElementById('schoolCode').value.trim();
+      
+      if(!user || !pass || !schoolCode) {
+        Swal.fire({
+          icon: 'warning',
+          title: '⚠️ सूचना',
+          text: 'कृपया सर्व फील्ड्स भरा',
+          confirmButtonText: 'ठीक आहे'
+        });
+        return;
+      }
+      
+      Swal.fire({
+        title: '⏳ लॉगिन होत आहे...',
+        text: 'कृपया प्रतीक्षा करा',
+        allowOutsideClick: false,
+        didOpen: () => {
+          Swal.showLoading();
+        }
+      });
+      
+      // प्रथम लॉगिन व्हॅलिडेट करा
+      const loginUrl = APP_URL + "?user=" + encodeURIComponent(user) + 
+                       "&pass=" + encodeURIComponent(pass) + 
+                       "&schoolCode=" + encodeURIComponent(schoolCode);
+      
+      fetch(loginUrl, { method: 'GET', mode: 'no-cors' })
+        .then(() => {
+          Swal.close();
+          // नवीन विंडोमध्ये Apps Script उघडा
+          window.open(loginUrl, '_blank');
+          
+          Swal.fire({
+            icon: 'success',
+            title: '✅ यशस्वी!',
+            text: 'लॉगिन यशस्वी. नवीन विंडोमध्ये MIS उघडली जाईल.',
+            timer: 2000,
+            showConfirmButton: false
+          });
+        })
+        .catch(() => {
+          Swal.close();
+          // त्रुटी असली तरीही नवीन विंडो उघडा
+          window.open(loginUrl, '_blank');
+        });
+    }
   </script>
 </body>
 </html>
