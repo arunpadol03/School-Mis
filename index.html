@@ -1,219 +1,52 @@
 <!DOCTYPE html>
-<html lang="mr">
+<html>
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-  <meta name="theme-color" content="#4f46e5">
-  <title>सरस्वती विद्यालय MIS | विद्यार्थी व्यवस्थापन</title>
-  
-  <!-- Google Fonts - मराठी फॉन्ट -->
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  
+  <meta http-equiv="refresh" content="0; url=https://script.google.com/macros/s/AKfycbydr1FVj-gAplbz6S3pqsE2kbjbpd1r3lQ5ceNF-Bxxx06MYhYuVS6j0TI-fbKffbuIDQ/exec">
+  <title>सरस्वती विद्यालय MIS</title>
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    
     body {
-      font-family: 'Noto Sans Devanagari', 'Segoe UI', Arial, sans-serif;
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      min-height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 20px;
-    }
-    
-    /* मुख्य कंटेनर */
-    .main-container {
-      width: 100%;
-      max-width: 1400px;
-      min-height: 90vh;
-      background: white;
-      border-radius: 20px;
-      box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25);
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-    }
-    
-    /* नेव्हिगेशन बार */
-    .navbar {
       background: linear-gradient(135deg, #667eea, #764ba2);
-      padding: 15px 25px;
       display: flex;
-      justify-content: space-between;
+      justify-content: center;
       align-items: center;
-      flex-wrap: wrap;
+      height: 100vh;
+      font-family: 'Noto Sans Devanagari', Arial, sans-serif;
       color: white;
-    }
-    
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-    
-    .logo-icon {
-      width: 45px;
-      height: 45px;
-      background: rgba(255,255,255,0.2);
-      border-radius: 12px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 24px;
-    }
-    
-    .logo-text {
-      font-size: 18px;
-      font-weight: 600;
-    }
-    
-    .logo-text span {
-      font-weight: 700;
-    }
-    
-    /* IFrame कंटेनर */
-    .iframe-container {
-      flex: 1;
-      background: #f5f5f5;
-      position: relative;
-    }
-    
-    iframe {
-      width: 100%;
-      height: 80vh;
-      border: none;
-      display: block;
-    }
-    
-    /* लोडिंग ओव्हरले */
-    .loading-overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0,0,0,0.7);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      z-index: 1000;
-      display: none;
-    }
-    
-    .loading-spinner {
-      background: white;
-      padding: 30px 40px;
-      border-radius: 20px;
       text-align: center;
+      margin: 0;
     }
-    
-    .loading-spinner i {
-      font-size: 50px;
-      color: #667eea;
+    .loader {
+      animation: fadeIn 1s;
+    }
+    .spinner {
+      border: 4px solid rgba(255,255,255,0.3);
+      border-top: 4px solid white;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
       animation: spin 1s linear infinite;
+      margin: 20px auto;
     }
-    
     @keyframes spin {
       0% { transform: rotate(0deg); }
       100% { transform: rotate(360deg); }
     }
-    
-    /* फूटर */
-    .footer {
-      text-align: center;
-      padding: 12px;
-      background: #f8f9fa;
-      font-size: 12px;
-      color: #666;
-      border-top: 1px solid #eee;
-    }
-    
-    .footer a {
-      color: #667eea;
-      text-decoration: none;
-    }
-    
-    /* रिस्पॉन्सिव्ह */
-    @media (max-width: 768px) {
-      .navbar {
-        flex-direction: column;
-        gap: 10px;
-        text-align: center;
-      }
-      iframe {
-        height: 70vh;
-      }
-      .logo-text {
-        font-size: 14px;
-      }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
     }
   </style>
 </head>
 <body>
-  <div class="main-container">
-    <!-- नेव्हिगेशन बार -->
-    <nav class="navbar">
-      <div class="logo">
-        <div class="logo-icon">
-          <i class="fas fa-school"></i>
-        </div>
-        <div class="logo-text">
-          <span>सरस्वती माध्यमिक विद्यालय</span> | MIS
-        </div>
-      </div>
-      <div>
-        <i class="fas fa-user-graduate"></i> विद्यार्थी व्यवस्थापन प्रणाली
-      </div>
-    </nav>
-    
-    <!-- IFrame सेक्शन -->
-    <div class="iframe-container">
-      <iframe id="misIframe" src="https://script.google.com/macros/s/AKfycbydr1FVj-gAplbz6S3pqsE2kbjbpd1r3lQ5ceNF-Bxxx06MYhYuVS6j0TI-fbKffbuIDQ/exec" title="सरस्वती विद्यालय MIS"></iframe>
-    </div>
-    
-    <!-- फूटर -->
-    <div class="footer">
-      <p>© 2026 सरस्वती माध्यमिक विद्यालय, बोरगांव काकडे | Developed by Arun Padol</p>
-    </div>
+  <div class="loader">
+    <h2>📚 सरस्वती विद्यालय MIS</h2>
+    <div class="spinner"></div>
+    <p>कृपया प्रतीक्षा करा... रीडायरेक्ट होत आहे</p>
+    <p><small>रीडायरेक्ट नसेल तर <a href="https://script.google.com/macros/s/AKfycbydr1FVj-gAplbz6S3pqsE2kbjbpd1r3lQ5ceNF-Bxxx06MYhYuVS6j0TI-fbKffbuIDQ/exec" style="color: white;">येथे क्लिक करा</a></small></p>
   </div>
-  
-  <div class="loading-overlay" id="loadingOverlay">
-    <div class="loading-spinner">
-      <i class="fas fa-spinner"></i>
-      <p style="margin-top: 15px;">लोड होत आहे... कृपया प्रतीक्षा करा</p>
-    </div>
-  </div>
-
   <script>
-    const iframe = document.getElementById('misIframe');
-    const loadingOverlay = document.getElementById('loadingOverlay');
-    
-    // IFrame लोड सुरू झाल्यावर
-    iframe.addEventListener('loadstart', function() {
-      loadingOverlay.style.display = 'flex';
-    });
-    
-    // IFrame लोड पूर्ण झाल्यावर
-    iframe.addEventListener('load', function() {
-      setTimeout(() => {
-        loadingOverlay.style.display = 'none';
-      }, 500);
-    });
-    
-    // IFrame लोड होण्यास वेळ लागल्यास
-    setTimeout(() => {
-      if (loadingOverlay.style.display === 'flex') {
-        loadingOverlay.style.display = 'none';
-      }
-    }, 10000);
+    window.location.href = "https://script.google.com/macros/s/AKfycbydr1FVj-gAplbz6S3pqsE2kbjbpd1r3lQ5ceNF-Bxxx06MYhYuVS6j0TI-fbKffbuIDQ/exec";
   </script>
 </body>
 </html>
