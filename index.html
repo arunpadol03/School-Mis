@@ -2,9 +2,44 @@
 <html>
 <head>
   <meta http-equiv="refresh" content="0; url=https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec">
-  <title>Redirecting...</title>
+  <title>सरस्वती विद्यालय MIS</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      color: white;
+    }
+    .loader {
+      text-align: center;
+    }
+    .spinner {
+      border: 4px solid rgba(255,255,255,0.3);
+      border-top: 4px solid white;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      animation: spin 1s linear infinite;
+      margin: 20px auto;
+    }
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+  </style>
 </head>
 <body>
-  <p>Redirecting to <a href="https://script.google.com/macros/s/AKfycbwqLVLdseD1dwejF4wHpdOqCCcBncNTT4X6VafaT80OiwJzEbfDBveZ9fu7L1DAJThd/exec">MIS System</a></p>
+  <div class="loader">
+    <h2>📚 सरस्वती विद्यालय MIS</h2>
+    <div class="spinner"></div>
+    <p>कृपया प्रतीक्षा करा... रीडायरेक्ट होत आहे</p>
+    <p><small><a href="https://script.google.com/macros/s/AKfycbwqLVLdseD1dwejF4wHpdOqCCcBncNTT4X6VafaT80OiwJzEbfDBveZ9fu7L1DAJThd/exec" style="color:white;">येथे क्लिक करा</a> जर आपोआप रीडायरेक्ट नसेल तर</small></p>
+  </div>
+  <script>
+    window.location.href = "https://script.google.com/macros/s/AKfycbwqLVLdseD1dwejF4wHpdOqCCcBncNTT4X6VafaT80OiwJzEbfDBveZ9fu7L1DAJThd/exec";
+  </script>
 </body>
 </html>
