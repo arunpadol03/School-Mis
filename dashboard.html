@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<h2>Dashboard</h2>
+
+<button onclick="loadStudents()">Load Students</button>
+<button onclick="logout()">Logout</button>
+
+<table border="1" id="table"></table>
+
+<script src="app.js"></script>
+
+<script>
+function loadStudents() {
+  const schoolId = localStorage.getItem("schoolId");
+
+  fetch(API + "?action=students&schoolId=" + schoolId)
+  .then(res => res.json())
+  .then(data => {
+    let html = "";
+    data.forEach(row => {
+      html += "<tr>";
+      row.forEach(col => html += `<td>${col}</td>`);
+      html += "</tr>";
+    });
+    document.getElementById("table").innerHTML = html;
+  });
+}
+
+function logout() {
+  localStorage.clear();
+  window.location = "index.html";
+}
+</script>
+
+</body>
+</html>
