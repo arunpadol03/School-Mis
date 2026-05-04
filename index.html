@@ -4,18 +4,26 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
   <meta name="theme-color" content="#4f46e5">
-  <title>??????? ???????? MIS | ?????????? ??????????</title>
+  <title>सरस्वती विद्यालय MIS | विद्यार्थी व्यवस्थापन</title>
   
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- मराठी फॉन्टसाठी Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Noto Sans Devanagari - मराठी फॉन्ट -->
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
-  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
     body {
-      font-family: 'Inter', 'Noto Sans Devanagari', sans-serif;
+      font-family: 'Noto Sans Devanagari', 'Poppins', 'Segoe UI', Arial, sans-serif;
       background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
       min-height: 100vh;
       display: flex;
@@ -23,6 +31,8 @@
       align-items: center;
       padding: 20px;
     }
+    
+    /* लॉगिन कार्ड */
     .login-card {
       max-width: 450px;
       width: 100%;
@@ -32,34 +42,73 @@
       overflow: hidden;
       animation: fadeInUp 0.6s ease;
     }
+    
     @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(30px); }
-      to { opacity: 1; transform: translateY(0); }
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
+    
+    /* कार्ड हेडर */
     .card-header {
       background: linear-gradient(135deg, #667eea, #764ba2);
       color: white;
       padding: 35px 30px;
       text-align: center;
     }
-    .card-header i { font-size: 55px; margin-bottom: 15px; }
-    .card-header h3 { font-size: 24px; margin-bottom: 5px; }
-    .card-header p { font-size: 13px; opacity: 0.9; }
-    .card-body { padding: 35px 30px; }
-    .input-group { margin-bottom: 20px; }
+    
+    .card-header i {
+      font-size: 55px;
+      margin-bottom: 15px;
+    }
+    
+    .card-header h3 {
+      font-size: 24px;
+      margin-bottom: 5px;
+      font-weight: 600;
+    }
+    
+    .card-header p {
+      font-size: 13px;
+      opacity: 0.9;
+    }
+    
+    /* कार्ड बॉडी */
+    .card-body {
+      padding: 35px 30px;
+    }
+    
+    .input-group {
+      margin-bottom: 20px;
+    }
+    
     .input-group input {
       width: 100%;
       padding: 14px 18px;
       border: 2px solid #e0e0e0;
       border-radius: 15px;
-      font-size: 14px;
-      transition: 0.3s;
+      font-size: 15px;
+      font-family: 'Noto Sans Devanagari', sans-serif;
+      transition: all 0.3s ease;
     }
+    
     .input-group input:focus {
       outline: none;
       border-color: #667eea;
       box-shadow: 0 0 0 3px rgba(102,126,234,0.1);
     }
+    
+    .input-group input::placeholder {
+      font-family: 'Noto Sans Devanagari', sans-serif;
+      color: #aaa;
+    }
+    
+    /* लॉगिन बटन */
     .login-btn {
       width: 100%;
       padding: 14px;
@@ -69,10 +118,17 @@
       border-radius: 15px;
       font-size: 16px;
       font-weight: 600;
+      font-family: 'Noto Sans Devanagari', sans-serif;
       cursor: pointer;
-      transition: 0.3s;
+      transition: all 0.3s ease;
     }
-    .login-btn:hover { transform: scale(1.02); box-shadow: 0 5px 15px rgba(102,126,234,0.4); }
+    
+    .login-btn:hover {
+      transform: scale(1.02);
+      box-shadow: 0 5px 15px rgba(102,126,234,0.4);
+    }
+    
+    /* फूटर */
     .footer {
       text-align: center;
       padding: 20px;
@@ -81,10 +137,39 @@
       color: #666;
       border-top: 1px solid #eee;
     }
-    .footer a { color: #667eea; text-decoration: none; }
+    
+    .footer a {
+      color: #667eea;
+      text-decoration: none;
+    }
+    
+    /* त्रुटी मेसेज */
+    #loginMsg {
+      text-align: center;
+      margin-top: 15px;
+      color: #dc3545;
+      font-size: 13px;
+    }
+    
+    /* मोबाईलसाठी */
     @media (max-width: 480px) {
-      .card-header { padding: 25px 20px; }
-      .card-body { padding: 25px 20px; }
+      .card-header {
+        padding: 25px 20px;
+      }
+      .card-body {
+        padding: 25px 20px;
+      }
+      .card-header h3 {
+        font-size: 20px;
+      }
+      .input-group input {
+        padding: 12px 15px;
+        font-size: 14px;
+      }
+      .login-btn {
+        padding: 12px;
+        font-size: 15px;
+      }
     }
   </style>
 </head>
@@ -92,33 +177,34 @@
   <div class="login-card">
     <div class="card-header">
       <i class="fas fa-school"></i>
-      <h3>??????? ???????? MIS</h3>
-      <p>?????????? ?????????? ???????</p>
+      <h3>📚 सरस्वती विद्यालय MIS</h3>
+      <p>विद्यार्थी व्यवस्थापन प्रणाली</p>
     </div>
     <div class="card-body">
       <div class="input-group">
-        <input type="text" id="user" placeholder="?? ???????">
+        <input type="text" id="user" placeholder="📧 यूजरनेम टाका">
       </div>
       <div class="input-group">
-        <input type="password" id="pass" placeholder="?? ???????">
+        <input type="password" id="pass" placeholder="🔒 पासवर्ड टाका">
       </div>
       <div class="input-group">
-        <input type="text" id="schoolCode" placeholder="?? ???? ???">
+        <input type="text" id="schoolCode" placeholder="🏛 शाळा कोड टाका">
       </div>
       <button class="login-btn" onclick="redirectToApp()">
-        <i class="fas fa-arrow-right-to-bracket"></i> ????? ???
+        <i class="fas fa-arrow-right-to-bracket"></i> लॉगिन करा
       </button>
-      <div id="loginMsg" style="text-align:center; margin-top:15px; color:#dc3545; font-size:13px;"></div>
+      <div id="loginMsg"></div>
     </div>
     <div class="footer">
-      <p>� 2026 ??????? ???????? ???????? | Developed by Arun Padol</p>
+      <p>© 2026 सरस्वती माध्यमिक विद्यालय | <i class="fas fa-code"></i> Developed by <a href="#">Arun Padol</a></p>
     </div>
   </div>
-  
+
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script>
-    // ========== ???? ????? Apps Script Web App URL ???? ==========
-    // ?? URL ??????? Apps Script ???? ????? - Deploy ? New deployment ? Web app
-    const APP_URL = "https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec";
+    // ========== येथे तुमची Apps Script Web App URL टाका ==========
+    // ही URL तुमच्या Apps Script मधून मिळवा - Deploy → New deployment → Web app
+    const APP_URL = "https://script.google.com/macros/s/AKfycbwqLVLdseD1dwejF4wHpdOqCCcBncNTT4X6VafaT80OiwJzEbfDBveZ9fu7L1DAJThd/exec";
     // ==============================================================
     
     function redirectToApp() {
@@ -129,27 +215,32 @@
       if(!user || !pass || !schoolCode) {
         Swal.fire({
           icon: 'warning',
-          title: '?? ?????',
-          text: '????? ???? ??????? ???',
-          confirmButtonText: '??? ???'
+          title: '⚠️ सूचना',
+          text: 'कृपया सर्व फील्ड्स भरा',
+          confirmButtonText: 'ठीक आहे',
+          confirmButtonColor: '#667eea'
         });
         return;
       }
       
-      // ?????? ?????
+      // लोडिंग दाखवा
       Swal.fire({
-        title: '? ????? ????????? ???...',
-        text: '????? ??? ???',
+        title: '⏳ कृपया प्रतीक्षा करा...',
+        text: 'लॉगिन होत आहे',
         allowOutsideClick: false,
-        didOpen: () => { Swal.showLoading(); }
+        didOpen: () => {
+          Swal.showLoading();
+        }
       });
       
-      // ???? ???????? Apps Script Web App ????
+      // नवीन टॅबमध्ये Apps Script Web App उघडा
       window.open(APP_URL + "?user=" + encodeURIComponent(user) + 
                   "&pass=" + encodeURIComponent(pass) + 
                   "&schoolCode=" + encodeURIComponent(schoolCode), "_blank");
       
-      Swal.close();
+      setTimeout(() => {
+        Swal.close();
+      }, 1000);
     }
   </script>
 </body>
